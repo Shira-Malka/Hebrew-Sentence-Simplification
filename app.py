@@ -136,7 +136,7 @@ def sentenceSimplification():
 
     text = re.sub("\"", "", s)
 
-    url = 'https://www.langndata.com/api/heb_parser?token=6c96509fd49d858c7c76ec1c761edeb4'
+    url = <PUT_YOUR_TOKEN_HERE>
     data = '{"data":"' + text + '"}'
     headers = {'content-type': 'application/json'}
     response = requests.post(url, data=data.encode('utf-8'), headers=headers)
