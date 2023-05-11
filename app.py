@@ -1,5 +1,7 @@
 import itertools
 import re
+import time
+
 import requests
 import pandas as pd
 
@@ -318,7 +320,6 @@ def sentenceSimplification():
     if y_pred == 1:
         complex = Label(userUI, text='Your sentence:\n\n"' + sentenceGrid.get() + '"\n\n detected as: COMPLEX.')
         complex.grid(row=4, column=1)
-
     else:
         notComplex = Label(userUI, text='Your sentence:\n\n"' + sentenceGrid.get() + '"\n\n detected as: NOT COMPLEX.')
         notComplex.grid(row=4, column=1)
