@@ -3,11 +3,7 @@
 
 Simplification of Hebrew texts for Israel state institutions using Random Forest Classification with Scikit-Learn.
 
-<<<<<<< HEAD
-=======
 Final project in a software engineering degree.
-
->>>>>>> 57b058d932bdf645994f591d0062dc275f90b65e
 
 ## API Reference
 
