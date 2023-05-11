@@ -138,7 +138,7 @@ def sentenceSimplification():
 
     text = re.sub("\"", "", s)
 
-    url = <PUT_YOUR_TOKEN_HERE>
+    url = 'https://www.langndata.com/api/heb_parser?token=6c96509fd49d858c7c76ec1c761edeb4'
     data = '{"data":"' + text + '"}'
     headers = {'content-type': 'application/json'}
     response = requests.post(url, data=data.encode('utf-8'), headers=headers)
@@ -343,13 +343,13 @@ kav.grid(row=1, column=1)
 kav = Label(userUI, text='      ')
 kav.grid(row=1, column=2)
 
-runModelButton = Button(userUI, text='RUN \nMODEL', width=15, height=5, pady=10, padx=10, fg='red', bg='yellow', command=sentenceSimplification)
+runModelButton = Button(userUI, text='RUN \nMODEL', width=15, height=5, pady=10, padx=10, fg='blue', bg='yellow', command=sentenceSimplification)
 runModelButton.grid(row=2, column=3)
 
 kav2 = Label(userUI, text='                ')
 kav2.grid(row=3, column=0)
 
-exitButton = Button(userUI, text='EXIT', width=15, height=5, pady=10, padx=10, fg='white', bg='red', command=userUI.destroy)
+exitButton = Button(userUI, text='EXIT', width=15, height=5, pady=10, padx=10, fg='blue', bg='yellow', command=userUI.destroy)
 exitButton.grid(row=4, column=3)
 
 sentenceGrid = Entry(userUI, width=50, bg='lightblue', borderwidth=5)
