@@ -326,14 +326,14 @@ def sentenceSimplification():
 
 
 userUI = Tk()
-userUI.title('Sentence Detection')
-userUI.geometry("1000x600")
+userUI.title('Hebrew Sentence Detection')
+userUI.geometry("900x500")
 
 
 kav = Label(userUI, text='                ')
 kav.grid(row=0, column=0)
 
-headerLabel = Label(userUI, text='\nCOMPLEX SENTENCE DETECTION\nLets see if your sentence is complex :)', font=("Arial", 25))
+headerLabel = Label(userUI, text='\nHEBREW COMPLEX SENTENCE DETECTION\n', font=("Arial", 25))
 
 headerLabel.grid(row=0, column=1)
 kav = Label(userUI, text='------------------------------' +
