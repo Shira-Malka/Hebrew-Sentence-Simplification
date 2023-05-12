@@ -7,7 +7,7 @@ Final project in a software engineering degree.
 
 ## API Reference
 
-#### YAP Parser with LangNData
+#### YAP Parser using LangNData
 
 ```http
   https://www.langndata.com/heb_parser/register
