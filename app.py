@@ -1,6 +1,5 @@
 import itertools
 import re
-import time
 
 import requests
 import pandas as pd
@@ -329,7 +328,6 @@ userUI = Tk()
 userUI.title('Hebrew Sentence Detection')
 userUI.geometry("900x500")
 
-
 kav = Label(userUI, text='                ')
 kav.grid(row=0, column=0)
 
@@ -343,6 +341,7 @@ kav.grid(row=1, column=1)
 kav = Label(userUI, text='      ')
 kav.grid(row=1, column=2)
 
+
 runModelButton = Button(userUI, text='RUN \nMODEL', width=15, height=5, pady=10, padx=10, fg='blue', bg='yellow', command=sentenceSimplification)
 runModelButton.grid(row=2, column=3)
 
@@ -352,8 +351,11 @@ kav2.grid(row=3, column=0)
 exitButton = Button(userUI, text='EXIT', width=15, height=5, pady=10, padx=10, fg='blue', bg='yellow', command=userUI.destroy)
 exitButton.grid(row=4, column=3)
 
-sentenceGrid = Entry(userUI, width=50, bg='lightblue', borderwidth=5)
+sentenceGrid = Entry(userUI, width=50, bg='lightblue', foreground='black', borderwidth=5)
 sentenceGrid.insert(0, 'Write sentence to check...')
 sentenceGrid.grid(row=2, column=1)
 
 userUI.mainloop()
+
+# Not complex: אתה מוזמן לפנות אלינו כדי למצות את זכויותיך.
+# Complex: באתר זה תוכל לברר את הזכויות המגיעות לך בהתאם לאירועים ושינויים שהתרחשו בחייך.

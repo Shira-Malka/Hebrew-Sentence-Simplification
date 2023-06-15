@@ -5,6 +5,8 @@ Simplification of Hebrew texts for Israel state institutions using Random Forest
 
 Final project in a software engineering degree.
 
+![App GIF](https://s12.gifyu.com/images/SQpU4.gif)
+
 ## API Reference
 
 #### YAP Parser using LangNData
