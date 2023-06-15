@@ -28,6 +28,8 @@ Final project in a software engineering degree.
 
 ## Screenshots
 
+![App GIF](https://s12.gifyu.com/images/SQpU4.gif)
+
 ![App Screenshot](https://raw.githubusercontent.com/Shira-Malka/Hebrew-Sentence-Simplification/master/complex.png)
 
 ![App Screenshot](https://raw.githubusercontent.com/Shira-Malka/Hebrew-Sentence-Simplification/master/notComplex.png)
