@@ -5,7 +5,6 @@ Simplification of Hebrew texts for Israel state institutions using Random Forest
 
 Final project in a software engineering degree.
 
-![App GIF](https://raw.githubusercontent.com/Shira-Malka/Hebrew-Sentence-Simplification/master/appGIF.gif)
 
 ## API Reference
 
