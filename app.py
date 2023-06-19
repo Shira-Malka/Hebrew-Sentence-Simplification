@@ -1,4 +1,5 @@
 import itertools
+import json
 import re
 
 import requests
@@ -9,13 +10,20 @@ from tkinter import *
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
+# Read the configuration file
+with open('config.json') as file:
+    config = json.load(file)
 
-def sentenceSimplification():
+# Access the data structures
+api_token = config['api']['api_token']
+stopwords = config['stopwords']
+
+
+def sentenceSimplification(sentence_grid, user_ui):
     """
     This function build the sentence simplification vector with parts of speech.
-    :return:
     """
-    s = sentenceGrid.get()
+    s = sentence_grid.get()
 
     words = []
     letters = []
@@ -137,10 +145,9 @@ def sentenceSimplification():
 
     text = re.sub("\"", "", s)
 
-    url = <PUT_YOUR_TOKEN_HERE>
     data = '{"data":"' + text + '"}'
     headers = {'content-type': 'application/json'}
-    response = requests.post(url, data=data.encode('utf-8'), headers=headers)
+    response = requests.post(api_token, data=data.encode('utf-8'), headers=headers)
     json_response = response.json()
 
     heads_tree = []
@@ -235,21 +242,6 @@ def sentenceSimplification():
     DT_l.append(DT)
     MD_l.append(MD)
 
-    stopwords = ['אני', 'את', 'אתה', 'אנחנו', 'אתן', 'אתם', 'הם', 'הן', 'היא', 'הוא', 'שלי', 'שלו', 'שלך', 'שלה', 'שלנו', 'שלכם', 'שלכן', 'שלהם', 'שלהן', 'לי',
-                 'לו', 'לה', 'לנו', 'לכם', 'לכן', 'להם', 'להן', 'אותה', 'אותו', 'זה', 'זאת', 'אלה', 'אלו', 'תחת', 'מתחת', 'מעל', 'בין', 'עם', 'עד', 'נגר', 'על', 'אל', 'מול', 'של',
-                 'אצל', 'כמו', 'אחר', 'אותו', 'בלי', 'לפני', 'אחרי', 'מאחורי', 'עלי', 'עליו', 'עליה', 'עליך', 'עלינו', 'עליכם', 'לעיכן', 'עליהם', 'עליהן', 'כל', 'כולם', 'כולן',
-                 'כך',
-                 'ככה', 'כזה', 'זה', 'זות', 'אותי', 'אותה', 'אותם', 'אותך', 'אותו', 'אותן', 'אותנו', 'ואת', 'את', 'אתכם', 'אתכן', 'איתי', 'איתו', 'איתך', 'איתה', 'איתם', 'איתן',
-                 'איתנו', 'איתכם', 'איתכן', 'יהיה', 'תהיה', 'היתי', 'היתה', 'היה', 'להיות', 'עצמי', 'עצמו', 'עצמה', 'עצמם', 'עצמן', 'עצמנו', 'עצמהם', 'עצמהן', 'מי', 'מה', 'איפה',
-                 'היכן', 'אם', 'לאן', 'איזה', 'מהיכן', 'איך', 'כיצד', 'מתי', 'כאשר', 'כש', 'למרות',
-                 'לפני', 'אחרי', 'למה', 'מדוע', 'כי', 'יש', 'אין', 'אך', 'מנין', 'מאין', 'מאיפה', 'יכל', 'יכלה', 'יכלו', 'יכול', 'יכולה', 'יכולים', 'יכולות', 'יוכלו', 'יוכל',
-                 'מסוגל',
-                 'לא', 'רק', 'אולי', 'אין', 'לאו', 'אי', 'כלל', 'נגד', 'אם', 'עם', 'אל', 'אלה', 'אלו', 'אף', 'על', 'מעל', 'מתחת', 'מצד', 'בשביל', 'לבין', 'באמצע', 'בתוך', 'דרך',
-                 'מבעד', 'באמצעות', 'למעלה', 'למטה', 'מחוץ', 'מן', 'לעבר', 'מכאן', 'כאן', 'הנה', 'הרי', 'פה', 'שם', 'אך', 'ברם', 'שוב', 'אבל', 'מבלי', 'בלי', 'מלבד', 'רק',
-                 'בגלל', 'מכיוון', 'עד', 'אשר', 'ואילו', 'למרות', 'כמו', 'כפי', 'אז', 'אחרי', 'כן', 'לכן', 'לפיכך', 'מאד', 'מעט', 'מעטים', 'במידה', 'שוב', 'יותר', 'מדי', 'גם',
-                 'כן',
-                 'נו', 'אחר', 'אחרת', 'אחרים', 'אחרות', 'אשר', 'או']
-
     splitSentence = s.split()
     stopWordsNum = 0
     for word in splitSentence:
@@ -317,45 +309,52 @@ def sentenceSimplification():
     y_pred = rf.predict(sentenceVector)
 
     if y_pred == 1:
-        complex = Label(userUI, text='Your sentence:\n\n"' + sentenceGrid.get() + '"\n\n detected as: COMPLEX.')
+        complex = Label(user_ui, text='Your sentence:\n\n"' + sentence_grid.get() + '"\n\n detected as: COMPLEX.')
         complex.grid(row=4, column=1)
     else:
-        notComplex = Label(userUI, text='Your sentence:\n\n"' + sentenceGrid.get() + '"\n\n detected as: NOT COMPLEX.')
+        notComplex = Label(user_ui, text='Your sentence:\n\n"' + sentence_grid.get() + '"\n\n detected as: NOT COMPLEX.')
         notComplex.grid(row=4, column=1)
 
 
-userUI = Tk()
-userUI.title('Hebrew Sentence Detection')
-userUI.geometry("900x500")
+def AppGUI():
+    # main window
+    userUI = Tk()
+    userUI.title('Hebrew Sentence Detection')
+    userUI.geometry("900x500")
 
-kav = Label(userUI, text='                ')
-kav.grid(row=0, column=0)
+    kav = Label(userUI, text='                ')
+    kav.grid(row=0, column=0)
 
-headerLabel = Label(userUI, text='\nHEBREW COMPLEX SENTENCE DETECTION\n', font=("Arial", 25))
+    headerLabel = Label(userUI, text='\nHEBREW COMPLEX SENTENCE DETECTION\n', font=("Arial", 25))
 
-headerLabel.grid(row=0, column=1)
-kav = Label(userUI, text='------------------------------' +
-                         '--------------------------------------------------------------')
-kav.grid(row=1, column=1)
+    headerLabel.grid(row=0, column=1)
+    kav = Label(userUI, text='------------------------------' +
+                             '--------------------------------------------------------------')
+    kav.grid(row=1, column=1)
 
-kav = Label(userUI, text='      ')
-kav.grid(row=1, column=2)
+    kav = Label(userUI, text='      ')
+    kav.grid(row=1, column=2)
+
+    # run model button
+    runModelButton = Button(userUI, text='RUN \nMODEL', width=15, height=5, pady=10, padx=10, fg='blue', bg='yellow', command=lambda: sentenceSimplification(sentenceGrid, userUI))
+    runModelButton.grid(row=2, column=3)
+
+    kav2 = Label(userUI, text='                ')
+    kav2.grid(row=3, column=0)
+
+    # exit button
+    exitButton = Button(userUI, text='EXIT', width=15, height=5, pady=10, padx=10, fg='blue', bg='yellow', command=userUI.destroy)
+    exitButton.grid(row=4, column=3)
+
+    # hebrew sentence place
+    sentenceGrid = Entry(userUI, width=50, bg='lightblue', foreground='black', borderwidth=5)
+    sentenceGrid.insert(0, 'Write sentence to check...')
+    sentenceGrid.grid(row=2, column=1)
+
+    userUI.mainloop()
 
 
-runModelButton = Button(userUI, text='RUN \nMODEL', width=15, height=5, pady=10, padx=10, fg='blue', bg='yellow', command=sentenceSimplification)
-runModelButton.grid(row=2, column=3)
-
-kav2 = Label(userUI, text='                ')
-kav2.grid(row=3, column=0)
-
-exitButton = Button(userUI, text='EXIT', width=15, height=5, pady=10, padx=10, fg='blue', bg='yellow', command=userUI.destroy)
-exitButton.grid(row=4, column=3)
-
-sentenceGrid = Entry(userUI, width=50, bg='lightblue', foreground='black', borderwidth=5)
-sentenceGrid.insert(0, 'Write sentence to check...')
-sentenceGrid.grid(row=2, column=1)
-
-userUI.mainloop()
+AppGUI()
 
 # Not complex: אתה מוזמן לפנות אלינו כדי למצות את זכויותיך.
 # Complex: באתר זה תוכל לברר את הזכויות המגיעות לך בהתאם לאירועים ושינויים שהתרחשו בחייך.

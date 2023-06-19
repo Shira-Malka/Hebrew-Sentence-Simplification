@@ -5,19 +5,18 @@ Simplification of Hebrew texts for Israel state institutions using Random Forest
 
 Final project in a software engineering degree.
 
-![App GIF](https://s12.gifyu.com/images/SQpU4.gif)
+![App Banner](https://raw.githubusercontent.com/Shira-Malka/Hebrew-Sentence-Simplification/master/app-banner.png)
+
 
 ## API Reference
 
 #### YAP Parser using LangNData
 
-```http
-  https://www.langndata.com/heb_parser/register
-```
+```https://www.langndata.com/heb_parser/register```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `url` | `string` | **Required**. Your API token |
+| `api_token` | `string` | **Required**. Your API token |
 
 
 
@@ -30,15 +29,13 @@ Final project in a software engineering degree.
 
 ## Screenshots
 
-![App GIF](https://s12.gifyu.com/images/SQpU4.gif)
+![App Screenshot](https://raw.githubusercontent.com/Shira-Malka/Hebrew-Sentence-Simplification/master/img/complex.png)
 
-![App Screenshot](https://raw.githubusercontent.com/Shira-Malka/Hebrew-Sentence-Simplification/master/complex.png)
-
-![App Screenshot](https://raw.githubusercontent.com/Shira-Malka/Hebrew-Sentence-Simplification/master/notComplex.png)
+![App Screenshot](https://raw.githubusercontent.com/Shira-Malka/Hebrew-Sentence-Simplification/master/img/notComplex.png)
 
 
 ## 🚀 About Us
-Shira Malka - Software Engineer (1+ yr Python Developer)
+Shira Malka - Backend Engineer
 
 Ron Bar Zvi - Software Engineer
 
@@ -46,4 +43,6 @@ Ron Bar Zvi - Software Engineer
 ## Support
 
 For support, email malka.shiraa@gmail.com | ron.bzeve@gmail.com
+
+
 
