@@ -29,9 +29,15 @@ Final project in a software engineering degree.
 
 ## Screenshots
 
+Input: ״אתה מוזמן לפנות אלינו כדי למצות את זכויותיך.״
 ![App Screenshot](https://raw.githubusercontent.com/Shira-Malka/Hebrew-Sentence-Simplification/master/img/complex.png)
+Output: detected as Not complex. 
 
+Input: ״באתר זה תוכל לברר את הזכויות המגיעות לך בהתאם לאירועים ושינויים שהתרחשו בחייך.״
 ![App Screenshot](https://raw.githubusercontent.com/Shira-Malka/Hebrew-Sentence-Simplification/master/img/notComplex.png)
+output: detected as Complex.
+
+Now enter any sentence in Hebrew and check it yourself!
 
 
 ## 🚀 About Us
